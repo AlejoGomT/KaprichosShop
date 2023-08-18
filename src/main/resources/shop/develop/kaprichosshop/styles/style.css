@@ -1,0 +1,154 @@
+.container {
+    -fx-background-image: url('shop/develop/kaprichosshop/images/background.jpg');
+}
+
+.btnPrimary {
+    -fx-background-color: #1E555C;
+    -fx-background-radius: 50;
+    -fx-border-color: #012C31;
+    -fx-border-width: 3;
+    -fx-border-radius: 50;
+    -fx-font-weight: bold;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 20;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btnSecondary {
+    -fx-background-color: #1E555C;
+    -fx-background-radius: 25;
+    -fx-font-weight: bold;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btnSecondary:hover {
+    -fx-border-color: #012C31;
+    -fx-border-radius: 25;
+    -fx-border-width: 2;
+}
+
+.btnBack {
+    -fx-background-color:  #012C31;
+    -fx-background-radius: 50;
+}
+
+.btnBack:hover{
+    -fx-border-color: #DFEAEC;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+}
+
+.exit{
+    -fx-background-color:  transparent;
+}
+
+.exit:hover{
+    -fx-border-color: #DFEAEC;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+}
+
+.bgGradient {
+ -fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #1e555c 0.0%,#ffffff 100.0%);
+}
+
+.labelTitle {
+    -fx-font-weight: bold;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #1E555C;
+    -fx-background-radius: 25 25 0 0;
+    -fx-border-color: #012C31;
+    -fx-border-radius: 25 25 0 0;
+    -fx-border-width: 2 2 0 2;
+}
+
+.table{
+    -fx-border-color: #012C31;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-background-radius: 10;
+}
+
+.column{
+    -fx-border-color: #012C31;
+    -fx-border-width: 0 1 1 0;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 13;
+    -fx-text-fill: #1E555C;
+}
+
+.startColumn{
+    -fx-background-radius: 10 0 0 0;
+}
+
+.endColumn{
+    -fx-border-width: 0 0 1 0;
+    -fx-background-radius: 0 10 0 0;
+}
+
+.totalTextStyle{
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.totalStyle{
+    -fx-text-fill: #ffffff;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-background-color: #1E555C;
+}
+
+.labelForm{
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 10;
+    -fx-border-color: #012C31;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+}
+
+.labelInf{
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-text-fill: #012C31;
+}
+
+.labelNumber{
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FF1700;
+}
+
+.labelData{
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 12;
+    -fx-underline: true;
+    -fx-text-fill: #1E555C;
+}
+
+.modalStyle{
+    -fx-background-color: #ECF2F3;
+    -fx-background-radius: 25;
+    -fx-border-color: #012C31;
+    -fx-border-radius: 25;
+    -fx-border-width: 3;
+}
+
+.labelTitle {
+    -fx-font-weight: bold;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #1E555C;
+    -fx-background-radius: 25;
+    -fx-border-color: #012C31;
+    -fx-border-radius: 25;
+    -fx-border-width: 2;
+}

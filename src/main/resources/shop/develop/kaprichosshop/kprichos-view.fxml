@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="750.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="389.0" style="-fx-background-color: #1E555C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="254.0" fitWidth="280.0" layoutX="64.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logo2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="450.0" fitWidth="350.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/background.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="container" stylesheets="@styles/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="30.0" styleClass="exit" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" cache="true" depthTest="DISABLE" fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="exit">
+                           <image>
+                              <Image url="@images/icons8-salida-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <JFXButton buttonType="RAISED" layoutX="79.0" layoutY="114.0" prefHeight="52.0" prefWidth="189.0" styleClass="btnPrimary" text="Ventas" AnchorPane.topAnchor="115.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="81.0" layoutY="199.0" prefHeight="52.0" prefWidth="189.0" styleClass="btnPrimary" text="Productos">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="81.0" layoutY="307.0" prefHeight="52.0" prefWidth="189.0" styleClass="btnPrimary" text="Clientes" AnchorPane.bottomAnchor="115.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/kprichosShop2.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btnBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" fitHeight="13.0" fitWidth="12.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons8-volver-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="exit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" cache="true" depthTest="DISABLE" fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="exit">
+                           <image>
+                              <Image url="@images/icons8-salida-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="138.0" styleClass="btnSecondary" text="Registrar venta" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="130.0" />
+                  <Label prefHeight="44.0" prefWidth="189.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="123.0">
+                     <graphic>
+                        <HBox alignment="CENTER" fillHeight="false" prefHeight="44.0" prefWidth="129.0" style="-fx-spacing: 10;">
+                           <children>
+                              <TextField prefHeight="25.0" prefWidth="150.0" promptText="Orden de venta">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" top="3.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@images/icons8-búsqueda-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="293.0" layoutY="190.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Historico de ventas" />
+                  <TableView fixedCellSize="0.0" prefHeight="200.0" prefWidth="453.0" styleClass="table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="220.0">
+                    <columns>
+                      <TableColumn maxWidth="77.0" minWidth="77.0" prefWidth="77.0" text="Cod.">
+                           <styleClass>
+                              <String fx:value="column" />
+                              <String fx:value="startColumn" />
+                           </styleClass>
+                        </TableColumn>
+                      <TableColumn maxWidth="80.0" minWidth="80.0" styleClass="column" text="Fecha" />
+                        <TableColumn maxWidth="210.0" minWidth="210.0" prefWidth="210.0" styleClass="column" text="Cliente" />
+                        <TableColumn maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="column" text="Cant. productos" />
+                        <TableColumn maxWidth="77.0" minWidth="77.0" prefWidth="77.0" styleClass="column" text="IVA" />
+                        <TableColumn maxWidth="77.0" minWidth="77.0" prefWidth="77.0" text="Total">
+                           <styleClass>
+                              <String fx:value="endColumn" />
+                              <String fx:value="column" />
+                           </styleClass>
+                        </TableColumn>
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/kprichosShop2.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btnBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" fitHeight="13.0" fitWidth="12.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons8-volver-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="exit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" cache="true" depthTest="DISABLE" fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="exit">
+                           <image>
+                              <Image url="@images/icons8-salida-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="125.0" layoutY="113.0" prefHeight="124.0" prefWidth="500.0" styleClass="labelForm" AnchorPane.bottomAnchor="216.0" AnchorPane.topAnchor="110.0">
+                     <graphic>
+                        <GridPane alignment="TOP_CENTER" prefHeight="129.0" prefWidth="508.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" percentWidth="0.0" prefWidth="265.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="231.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" percentHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" percentHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" percentHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="20.0" minHeight="20.0" percentHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="5.0" minHeight="5.0" percentHeight="0.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label prefHeight="33.0" prefWidth="206.0">
+                                 <graphic>
+                                    <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="33.0" prefWidth="216.0" style="-fx-spacing: 10;">
+                                       <children>
+                                          <TextField prefHeight="25.0" prefWidth="150.0" promptText="ID/NIT Cliente" style="-fx-border-color: #012C31; -fx-border-radius: 5;">
+                                             <HBox.margin>
+                                                <Insets bottom="3.0" left="3.0" top="3.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                                             <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                                   <image>
+                                                      <Image url="@images/icons8-búsqueda-50.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="120.0" styleClass="btnSecondary" text="Nuevo Cliente" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label prefWidth="60.0" styleClass="labelInf" text="Cliente:" />
+                                    <Label styleClass="labelData" text="Alejandro Gomez Trejos" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label prefWidth="60.0" styleClass="labelInf" text="Doc/NIT:" />
+                                    <Label styleClass="labelData" text="1005095771" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label prefWidth="60.0" styleClass="labelInf" text="Direccion:" />
+                                    <Label styleClass="labelData" text="Kr 21 #20-01 Esquina Apt 705" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="183.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="25.0" styleClass="labelNumber" text="No." />
+                                    <Label styleClass="labelNumber" text="0001" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label prefWidth="60.0" styleClass="labelInf" text="Telefono:" />
+                                    <Label styleClass="labelData" text="3212000824" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label prefWidth="60.0" styleClass="labelInf" text="Fecha:" />
+                                    <Label styleClass="labelData" text="14/08/2023" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </graphic></Label>
+                  <TableView fixedCellSize="0.0" layoutX="125.0" layoutY="239.0" prefHeight="124.0" prefWidth="500.0" styleClass="table" AnchorPane.bottomAnchor="80.0">
+                     <columns>
+                        <TableColumn maxWidth="77.0" minWidth="77.0" prefWidth="77.0" text="Cant.">
+                           <styleClass>
+                              <String fx:value="column" />
+                              <String fx:value="startColumn" />
+                           </styleClass>
+                        </TableColumn>
+                        <TableColumn maxWidth="210.0" minWidth="210.0" prefWidth="210.0" styleClass="column" text="Concepto" />
+                        <TableColumn maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="column" text="Precio" />
+                        <TableColumn maxWidth="105.0" minWidth="105.0" prefWidth="105.0" text="Importe">
+                           <styleClass>
+                              <String fx:value="endColumn" />
+                              <String fx:value="column" />
+                           </styleClass>
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+                  <Button layoutX="125.0" layoutY="380.0" mnemonicParsing="false" styleClass="btnSecondary" text="Registrar" AnchorPane.bottomAnchor="30.0" />
+                  <Button layoutX="242.0" layoutY="380.0" mnemonicParsing="false" styleClass="btnSecondary" text="Agregar producto" AnchorPane.bottomAnchor="30.0" />
+                  <Label layoutX="419.0" layoutY="373.0" prefHeight="63.0" prefWidth="206.0">
+                     <graphic>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Label styleClass="totalTextStyle" text="Sub Total:" />
+                                    <Label alignment="CENTER" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" textAlignment="CENTER" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Label styleClass="totalTextStyle" text="IVA:" />
+                                    <Label alignment="CENTER" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <Label styleClass="totalTextStyle" text="Total:" />
+                                    <Label alignment="CENTER" prefHeight="17.0" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Label>
+                  <Pane layoutX="189.0" layoutY="84.0" prefHeight="300.0" prefWidth="500.0" styleClass="modalStyle" visible="false" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="75.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="206.0">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="33.0" prefWidth="216.0" style="-fx-spacing: 10;">
+                                 <children>
+                                    <TextField prefHeight="25.0" prefWidth="150.0" promptText="SKU Producto" style="-fx-border-color: #012C31; -fx-border-radius: 5;">
+                                       <HBox.margin>
+                                          <Insets bottom="3.0" left="3.0" top="3.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                             <image>
+                                                <Image url="@images/icons8-búsqueda-50.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </Label>
+                        <Button layoutX="451.0" layoutY="16.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@images/icons8-eliminar-30.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TableView fixedCellSize="0.0" layoutX="55.0" layoutY="66.0" prefHeight="210.0" prefWidth="390.0" styleClass="table">
+                           <columns>
+                              <TableColumn maxWidth="77.0" minWidth="77.0" prefWidth="77.0" text="SKU">
+                                 <styleClass>
+                                    <String fx:value="column" />
+                                    <String fx:value="startColumn" />
+                                 </styleClass>
+                              </TableColumn>
+                              <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Producto" />
+                              <TableColumn maxWidth="80.0" minWidth="80.0" styleClass="column" text="Precio" />
+                              <TableColumn maxWidth="80.0" minWidth="80.0">
+                                 <styleClass>
+                                    <String fx:value="endColumn" />
+                                    <String fx:value="column" />
+                                 </styleClass>
+                              </TableColumn>
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/kprichosShop2.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btnBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" fitHeight="13.0" fitWidth="12.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons8-volver-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="exit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" cache="true" depthTest="DISABLE" fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="exit">
+                           <image>
+                              <Image url="@images/icons8-salida-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="118.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="165.0" styleClass="btnSecondary" text="Registrar producto" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="130.0" />
+                  <Label prefHeight="44.0" prefWidth="189.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="123.0">
+                     <graphic>
+                        <HBox alignment="CENTER" fillHeight="false" prefHeight="44.0" prefWidth="129.0" style="-fx-spacing: 10;">
+                           <children>
+                              <TextField prefHeight="25.0" prefWidth="150.0" promptText="SKU">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" top="3.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@images/icons8-búsqueda-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="293.0" layoutY="190.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Productos" />
+                  <TableView fixedCellSize="0.0" prefHeight="200.0" prefWidth="453.0" styleClass="table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="220.0">
+                     <columns>
+                        <TableColumn maxWidth="85.0" minWidth="85.0" prefWidth="85.0" text="SKU">
+                           <styleClass>
+                              <String fx:value="column" />
+                              <String fx:value="startColumn" />
+                           </styleClass>
+                        </TableColumn>
+                        <TableColumn maxWidth="200.0" minWidth="200.0" prefWidth="200.0" styleClass="column" text="Producto" />
+                        <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Tipo" />
+                        <TableColumn maxWidth="90.0" minWidth="90.0" prefWidth="90.0" styleClass="column" text="Stock" />
+                        <TableColumn maxWidth="100.0" minWidth="100.0" prefWidth="100.0" styleClass="column" text="Valor Unitario" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/kprichosShop2.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btnBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" fitHeight="13.0" fitWidth="12.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons8-volver-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="exit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" cache="true" depthTest="DISABLE" fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="exit">
+                           <image>
+                              <Image url="@images/icons8-salida-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="73.0" layoutY="119.0" prefHeight="294.0" prefWidth="604.0" styleClass="labelForm">
+                     <graphic>
+                        <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="130.0" prefWidth="500.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="300.0" percentWidth="0.0" prefWidth="300.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="300.0" percentWidth="0.0" prefWidth="300.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                              <RowConstraints maxHeight="61.0" minHeight="40.0" percentHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefWidth="110.0" styleClass="labelInf" text="SKU Producto:" />
+                                    <TextField prefWidth="146.0" promptText="SKU" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label prefWidth="80.0" styleClass="labelInf" text="Producto:" />
+                                    <TextField prefWidth="155.0" promptText="Nombre del producto" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets right="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label prefWidth="110.0" styleClass="labelInf" text="Descripcion:" />
+                                    <TextArea prefHeight="60.0" prefWidth="403.0" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label prefWidth="110.0" styleClass="labelInf" text="Tipo de producto:" />
+                                    <CheckBox mnemonicParsing="false" styleClass="labelData" text="Perecederos" />
+                                    <CheckBox mnemonicParsing="false" styleClass="labelData" text="Refrigerados" />
+                                    <CheckBox mnemonicParsing="false" styleClass="labelData" text="Enlatados" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label prefWidth="80.0" styleClass="labelInf" text="Vencimiento:" />
+                                    <DatePicker prefWidth="155.0" promptText="Date" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets right="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label prefWidth="110.0" styleClass="labelInf" text="Stock:" />
+                                    <TextField promptText="Cant. Productos" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <Button mnemonicParsing="false" styleClass="btnSecondary" text="Agregar" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="5">
+                                 <children>
+                                    <Label prefWidth="110.0" styleClass="labelInf" text="Cod. Aprovacion:" />
+                                    <TextField promptText="Cod. de calidad" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <children>
+                                    <Label prefWidth="80.0" styleClass="labelInf" text="Temperatura:" />
+                                    <TextField prefWidth="155.0" promptText="Cod. de calidad" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="40.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </graphic>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="293.0" layoutY="104.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Productos" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/kprichosShop2.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="btnBack" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" fitHeight="13.0" fitWidth="12.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons8-volver-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="exit" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON" cache="true" depthTest="DISABLE" fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="exit">
+                           <image>
+                              <Image url="@images/icons8-salida-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="118.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="165.0" styleClass="btnSecondary" text="Registrar Cliente" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="130.0" />
+                  <Label prefHeight="44.0" prefWidth="189.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="123.0">
+                     <graphic>
+                        <HBox alignment="CENTER" fillHeight="false" prefHeight="44.0" prefWidth="129.0" style="-fx-spacing: 10;">
+                           <children>
+                              <TextField prefHeight="25.0" prefWidth="150.0" promptText="ID / NIT">
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" top="3.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@images/icons8-búsqueda-50.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="293.0" layoutY="190.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Clientes" />
+                  <TableView fixedCellSize="0.0" prefHeight="200.0" prefWidth="453.0" styleClass="table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="220.0">
+                     <columns>
+                        <TableColumn maxWidth="80.0" minWidth="80.0" text="ID/NIT">
+                           <styleClass>
+                              <String fx:value="column" />
+                              <String fx:value="startColumn" />
+                           </styleClass>
+                        </TableColumn>
+                        <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Nombre" />
+                        <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Apellido" />
+                        <TableColumn maxWidth="90.0" minWidth="90.0" prefWidth="90.0" styleClass="column" text="Telefono" />
+                        <TableColumn maxWidth="155.0" minWidth="155.0" prefWidth="155.0" styleClass="column" text="Direccion" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
