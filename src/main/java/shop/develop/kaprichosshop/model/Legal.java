@@ -3,8 +3,8 @@ package shop.develop.kaprichosshop.model;
 import java.util.Objects;
 
 public class Legal extends Client {
-    public Legal(String name, String lastName, String address,String phone,String id) {
-        super(name,lastName,address,phone,id);
+    public Legal(String id, String name, String lastName,String phone, String address) {
+        super(id, name,lastName,phone, address);
     }
 
     @Override

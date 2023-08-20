@@ -25,40 +25,20 @@ public class Sale {
         return idSale;
     }
 
-    public void setIdSale(String idSale) {
-        this.idSale = idSale;
-    }
-
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Double getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
     public double getTax() {
         return tax;
     }
 
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
-
     public ArrayList<DetailSale> getDetailSale() {
         return detailSale;
-    }
-
-    public void setDetailSale(ArrayList<DetailSale> detailSale) {
-        this.detailSale = detailSale;
     }
 
     public void RegisterSale() {

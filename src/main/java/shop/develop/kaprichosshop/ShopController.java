@@ -3,16 +3,17 @@ package shop.develop.kaprichosshop;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class ShopController {
+public class ShopController extends ShopBackend{
     //Controls elements from fxml
-    @FXML
-    public AnchorPane pageHome, salesContainer, salesDataPage, salesRegisterPage,
+    @FXML private AnchorPane pageHome, salesContainer, salesDataPage, salesRegisterPage,
             productsContainer, productsDataPage, productsRegisterPage, clientsContainer,
             clientsDataPage, clientsRegisterPage;
-    public Pane modalPaneOfSale;
+    @FXML private Pane modalPaneOfSale;
 
     //Function for close the application
     public void clickCloseButton(ActionEvent event){
@@ -89,5 +90,36 @@ public class ShopController {
     public void clickRegisterClient(ActionEvent event){
         clientsDataPage.setVisible(false);
         clientsRegisterPage.setVisible(true);
+    }
+
+    //Add button client
+    public void clickAddClient(ActionEvent event){
+        if (idInput.getText().isEmpty()) {
+            alertFromClient("El " + ("Natural".equals(typeClientSelect.getValue()) ? "documento" : "nit") + "del cliente es requerido.");
+        } else if (nameInput.getText().isEmpty()) {
+            alertFromClient("El campo de Nombre es requerido.");
+        } else if (lastNameInput.getText().isEmpty()) {
+            alertFromClient("El campo de Apellido es requerido.");
+        } else if (addressInput.getText().isEmpty()) {
+            alertFromClient("La direccion es requerida.");
+        } else if (phoneInput.getText().isEmpty()) {
+            alertFromClient("El numero de contacto es requerido.");
+        } else if (emailInput.getText().isEmpty() && formEmail.isVisible()) {
+            alertFromClient("El email es requerido.");
+        } else if (birthInput.getValue() == null && formBirth.isVisible()) {
+            alertFromClient("Debe seleccionar la fecha de nacimiento.");
+        } else if (!isValidEmail(emailInput.getText()) && formEmail.isVisible()) {
+            alertFromClient("Debe ingresar una direccion de correo valida.");
+        } else {
+            alertFromClient("Se a registrado exitosamente!");
+            addClientList();
+            idInput.setText("");
+            nameInput.setText("");
+            lastNameInput.setText("");
+            addressInput.setText("");
+            phoneInput.setText("");
+            emailInput.setText("");
+            birthInput.setValue(null);
+        }
     }
 }

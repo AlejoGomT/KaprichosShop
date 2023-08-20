@@ -567,7 +567,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="clientsContainer" layoutX="20.0" layoutY="20.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="clientsContainer" layoutX="20.0" layoutY="20.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="clientsDataPage" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -618,18 +618,18 @@
                      </graphic>
                   </Label>
                   <Label alignment="CENTER" layoutX="293.0" layoutY="190.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Clientes" />
-                  <TableView fixedCellSize="0.0" prefHeight="200.0" prefWidth="453.0" styleClass="table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="220.0">
+                  <TableView fx:id="tableClients" fixedCellSize="0.0" prefHeight="200.0" prefWidth="453.0" styleClass="table" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="220.0">
                      <columns>
-                        <TableColumn maxWidth="80.0" minWidth="80.0" text="ID/NIT">
+                        <TableColumn fx:id="columnId" maxWidth="80.0" minWidth="80.0" text="ID/NIT">
                            <styleClass>
                               <String fx:value="column" />
                               <String fx:value="startColumn" />
                            </styleClass>
                         </TableColumn>
-                        <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Nombre" />
-                        <TableColumn maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Apellido" />
-                        <TableColumn maxWidth="90.0" minWidth="90.0" prefWidth="90.0" styleClass="column" text="Telefono" />
-                        <TableColumn maxWidth="155.0" minWidth="155.0" prefWidth="155.0" styleClass="column" text="Direccion" />
+                        <TableColumn fx:id="columnName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Nombre" />
+                        <TableColumn fx:id="columnLastName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" styleClass="column" text="Apellido" />
+                        <TableColumn fx:id="columnPhone" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" styleClass="column" text="Telefono" />
+                        <TableColumn fx:id="columnAddress" maxWidth="155.0" minWidth="155.0" prefWidth="155.0" styleClass="column" text="Direccion" />
                      </columns>
                   </TableView>
                </children>
@@ -672,20 +672,29 @@
                               <RowConstraints maxHeight="61.0" minHeight="40.0" percentHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints fx:id="rowContraintsVisible" maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Tipo de Cliente:" />
-                                    <ChoiceBox prefWidth="100.0" />
+                                    <ChoiceBox fx:id="typeClientSelect" prefWidth="100.0" styleClass="clientType" />
                                  </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label fx:id="idLabel" prefWidth="80.0" styleClass="labelInf" text="Documento:" />
+                                    <TextField fx:id="idInput" prefWidth="155.0" promptText="Documento del cliente" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets right="40.0" />
+                                 </GridPane.margin>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="3">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Nombre:" />
-                                    <TextField prefWidth="146.0" promptText="Nombres del cliente" />
+                                    <TextField fx:id="nameInput" prefWidth="146.0" promptText="Nombres del cliente" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="40.0" />
@@ -694,16 +703,7 @@
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <children>
                                     <Label prefWidth="80.0" styleClass="labelInf" text="Apellido:" />
-                                    <TextField prefWidth="155.0" promptText="Apellidos del cliente" />
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets right="40.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                 <children>
-                                    <Label prefWidth="115.0" styleClass="labelInf" text="Feha de nacimiento:" />
-                                    <DatePicker prefWidth="120.0" promptText="Date" />
+                                    <TextField fx:id="lastNameInput" prefWidth="155.0" promptText="Apellidos del cliente" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets right="40.0" />
@@ -712,16 +712,7 @@
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="4">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Direccion:" />
-                                    <TextField promptText="Direccion de residencia" />
-                                 </children>
-                                 <GridPane.margin>
-                                    <Insets left="40.0" />
-                                 </GridPane.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="5">
-                                 <children>
-                                    <Label prefWidth="110.0" styleClass="labelInf" text="E-mail:" />
-                                    <TextField promptText="Correo electronico" />
+                                    <TextField fx:id="addressInput" promptText="Direccion de residencia" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="40.0" />
@@ -730,22 +721,31 @@
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
                                     <Label prefWidth="80.0" styleClass="labelInf" text="Telefono:" />
-                                    <TextField prefWidth="155.0" promptText="Numero de contato" />
+                                    <TextField fx:id="phoneInput" prefWidth="155.0" promptText="Numero de contato" />
                                  </children>
                                  <padding>
                                     <Insets right="40.0" />
                                  </padding>
                               </HBox>
-                              <Button mnemonicParsing="false" styleClass="btnSecondary" text="Agregar" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <HBox fx:id="formEmail" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="5">
                                  <children>
-                                    <Label prefWidth="80.0" styleClass="labelInf" text="Documento:" />
-                                    <TextField prefWidth="155.0" promptText="Apellidos del cliente" />
+                                    <Label prefWidth="110.0" styleClass="labelInf" text="E-mail:" />
+                                    <TextField fx:id="emailInput" promptText="Correo electronico" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </HBox>
+                              <HBox fx:id="formBirth" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <children>
+                                    <Label prefWidth="115.0" styleClass="labelInf" text="Feha de nacimiento:" />
+                                    <DatePicker fx:id="birthInput" prefWidth="120.0" promptText="Date" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets right="40.0" />
                                  </GridPane.margin>
                               </HBox>
+                              <Button fx:id="addClient" mnemonicParsing="false" onAction="#clickAddClient" styleClass="btnSecondary" text="Agregar" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
                      </graphic>

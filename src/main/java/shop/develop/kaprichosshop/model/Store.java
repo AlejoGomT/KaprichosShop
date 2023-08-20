@@ -18,25 +18,14 @@ public class Store {
         return listClient;
     }
 
-    public void setListClient(ArrayList<Client> listClient) {
-        this.listClient = listClient;
-    }
-
     public ArrayList<Product> getListProduct() {
         return listProduct;
-    }
-
-    public void setListProduct(ArrayList<Product> listProduct) {
-        this.listProduct = listProduct;
     }
 
     public ArrayList<Sale> getListSale() {
         return listSale;
     }
 
-    public void setListSale(ArrayList<Sale> listSale) {
-        this.listSale = listSale;
-    }
     ////////////////////CRUD////////////////////
 
     //CREATE AREA

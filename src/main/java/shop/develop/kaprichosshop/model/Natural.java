@@ -7,8 +7,8 @@ public class Natural extends Client {
     private String email;
     private Date birth;
 
-    public Natural(String name, String lastName, String address,String phone,String id,String email, Date birth) {
-        super(name,lastName,address,phone,id);
+    public Natural(String id, String name, String lastName, String phone, String address, String email, Date birth) {
+        super(id,name,lastName,phone, address);
         this.email = email;
         this.birth = birth;
     }
@@ -18,16 +18,8 @@ public class Natural extends Client {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Date getBirth() {
         return birth;
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
     }
 
     @Override
