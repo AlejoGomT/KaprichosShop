@@ -29,6 +29,38 @@
     -fx-border-width: 2;
 }
 
+.btnUpdate {
+    -fx-background-color: #012C31;
+    -fx-background-radius: 25;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btnUpdate:hover {
+    -fx-background-color: #1E555C;
+    -fx-border-color: #012C31;
+    -fx-font-weight: bold;
+    -fx-border-radius: 25;
+    -fx-border-width: 2;
+}
+
+.btnDanger {
+    -fx-background-color: #FB0000;
+    -fx-background-radius: 25;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 15;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btnDanger:hover {
+    -fx-background-color: #F44141;
+    -fx-border-color: #FB0000;
+    -fx-font-weight: bold;
+    -fx-border-radius: 25;
+    -fx-border-width: 2;
+}
+
 .btnBack {
     -fx-background-color:  #012C31;
     -fx-background-radius: 50;
@@ -71,14 +103,26 @@
     -fx-border-radius: 10;
     -fx-border-width: 2;
     -fx-background-radius: 10;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 13;
+    -fx-text-fill: #1E555C;
 }
 
 .column{
     -fx-border-color: #012C31;
     -fx-border-width: 0 1 1 0;
-    -fx-font-family: Bahnschrift;
+}
+
+.column:hover{
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:hover {
     -fx-font-size: 13;
-    -fx-text-fill: #1E555C;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #007bff;
+    -fx-border-color: #0056b3;
 }
 
 .startColumn{
@@ -159,3 +203,4 @@
     -fx-font-weight: bold;
     -fx-text-fill: #1E555C;
 }
+

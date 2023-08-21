@@ -3,16 +3,15 @@ package shop.develop.kaprichosshop;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import shop.develop.kaprichosshop.model.Client;
+import shop.develop.kaprichosshop.model.Natural;
 
 public class ShopController extends ShopBackend{
     //Controls elements from fxml
-    @FXML private AnchorPane pageHome, salesContainer, salesDataPage, salesRegisterPage,
-            productsContainer, productsDataPage, productsRegisterPage, clientsContainer,
-            clientsDataPage, clientsRegisterPage;
+    @FXML private AnchorPane pageHome, salesContainer, productsContainer, clientsContainer;
+
     @FXML private Pane modalPaneOfSale;
 
     //Function for close the application
@@ -60,7 +59,13 @@ public class ShopController extends ShopBackend{
         modalPaneOfSale.setVisible(true);
     }
     public void closeProductModal(ActionEvent event){
-        modalPaneOfSale.setVisible(false);
+        if (clientsRegisterPage.isVisible()){
+            clientsRegisterPage.setVisible(false);
+            backButtonData.setDisable(false);
+            backButtonRegister.setDisable(false);
+        }else {
+            modalPaneOfSale.setVisible(false);
+        }
     }
 
 
@@ -88,14 +93,17 @@ public class ShopController extends ShopBackend{
         productsRegisterPage.setVisible(true);
     }
     public void clickRegisterClient(ActionEvent event){
+        resetFormClientRegister();
         clientsDataPage.setVisible(false);
         clientsRegisterPage.setVisible(true);
     }
 
-    //Add button client
+    //Clients Button CRUD
     public void clickAddClient(ActionEvent event){
+        boolean isNaturalClient = "Natural".equals(typeClientSelect.getValue());
+
         if (idInput.getText().isEmpty()) {
-            alertFromClient("El " + ("Natural".equals(typeClientSelect.getValue()) ? "documento" : "nit") + "del cliente es requerido.");
+            alertFromClient("El " + (isNaturalClient ? "documento" : "nit") + " del cliente es requerido.");
         } else if (nameInput.getText().isEmpty()) {
             alertFromClient("El campo de Nombre es requerido.");
         } else if (lastNameInput.getText().isEmpty()) {
@@ -104,22 +112,55 @@ public class ShopController extends ShopBackend{
             alertFromClient("La direccion es requerida.");
         } else if (phoneInput.getText().isEmpty()) {
             alertFromClient("El numero de contacto es requerido.");
-        } else if (emailInput.getText().isEmpty() && formEmail.isVisible()) {
+        } else if (isNaturalClient && (emailInput.getText().isEmpty() && formEmail.isVisible())) {
             alertFromClient("El email es requerido.");
-        } else if (birthInput.getValue() == null && formBirth.isVisible()) {
+        } else if (isNaturalClient && (birthInput.getValue() == null && formBirth.isVisible())) {
             alertFromClient("Debe seleccionar la fecha de nacimiento.");
-        } else if (!isValidEmail(emailInput.getText()) && formEmail.isVisible()) {
+        } else if (isNaturalClient && (!isValidEmail(emailInput.getText()) && formEmail.isVisible())) {
+            alertFromClient("Debe ingresar una direccion de correo valida.");
+        } else if (existIntoArray(idInput.getText(), listClient, Client::getId)) {
+            alertNomatch("El id: " + idInput.getText() + " Ya existe en el sistema");
+        } else {
+            alertFromClient("Se ha registrado exitosamente!");
+            addClientList();
+            resetFormClientRegister();
+        }
+    }
+    public void clickSearch(ActionEvent event){
+        boolean idExists = false;
+
+        for (Client client : listClient) {
+            if (client.getId().equals(searchTextField.getText())) {
+                idExists = true;
+                break;
+            }
+        }
+
+        if (!idExists) {
+            alertNomatch("El cliente con el Id/Nit " + searchTextField.getText() + " no existe en el sistema.");
+        }
+        searchTextField.setText("");
+        tableClients.setItems(listClient);
+    }
+    public void clickUpdateClient(ActionEvent event){
+        boolean isNaturalClient = "Natural".equals(typeClientSelect.getValue());
+
+        if (addressInput.getText().isEmpty()) {
+            alertFromClient("La direccion es requerida.");
+        } else if (phoneInput.getText().isEmpty()) {
+            alertFromClient("El numero de contacto es requerido.");
+        } else if (isNaturalClient && (emailInput.getText().isEmpty() && formEmail.isVisible())) {
+            alertFromClient("El email es requerido.");
+        } else if (isNaturalClient && (birthInput.getValue() == null && formBirth.isVisible())) {
+            alertFromClient("Debe seleccionar la fecha de nacimiento.");
+        } else if (isNaturalClient && (!isValidEmail(emailInput.getText()) && formEmail.isVisible())) {
             alertFromClient("Debe ingresar una direccion de correo valida.");
         } else {
-            alertFromClient("Se a registrado exitosamente!");
-            addClientList();
-            idInput.setText("");
-            nameInput.setText("");
-            lastNameInput.setText("");
-            addressInput.setText("");
-            phoneInput.setText("");
-            emailInput.setText("");
-            birthInput.setValue(null);
+            updateClient();
+            alertUpdateDelete("Se a actualizado exitosamente");
         }
+    }
+    public void clickDeleteClient(ActionEvent event){
+        deleteClient(idInput.getText());
     }
 }

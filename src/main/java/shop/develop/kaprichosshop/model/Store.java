@@ -1,7 +1,9 @@
 package shop.develop.kaprichosshop.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Store {
     private ArrayList<Client> listClient;
@@ -30,7 +32,7 @@ public class Store {
 
     //CREATE AREA
 
-    public boolean createClientNatural(String name, String lastName, String address, String phone, String id, String email, Date birth) {
+    public boolean createClientNatural(String name, String lastName, String address, String phone, String id, String email, LocalDate birth) {
         Natural clientNatural = new Natural(name, lastName, address, phone, id, email, birth);
         if (listClient.contains(clientNatural)) {
             return false;
@@ -128,7 +130,7 @@ public class Store {
         return false;
     }
 
-    public boolean updateClientNatural(String name, String lastName, String address, String phone, String id, String email, Date birth) {
+    public boolean updateClientNatural(String name, String lastName, String address, String phone, String id, String email, LocalDate birth) {
         Natural clientNatural = new Natural(name, lastName, address, phone, id, email, birth);
         if (listClient.contains(clientNatural)) {
             int i = listClient.indexOf(clientNatural);

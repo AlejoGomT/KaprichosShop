@@ -1,13 +1,14 @@
 package shop.develop.kaprichosshop.model;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class Natural extends Client {
 
     private String email;
-    private Date birth;
+    private LocalDate birth;
 
-    public Natural(String id, String name, String lastName, String phone, String address, String email, Date birth) {
+    public Natural(String id, String name, String lastName, String phone, String address, String email, LocalDate birth) {
         super(id,name,lastName,phone, address);
         this.email = email;
         this.birth = birth;
@@ -18,7 +19,7 @@ public class Natural extends Client {
         return email;
     }
 
-    public Date getBirth() {
+    public LocalDate getBirth() {
         return birth;
     }
 
