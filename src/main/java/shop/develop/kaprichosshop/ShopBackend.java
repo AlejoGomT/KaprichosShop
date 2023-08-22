@@ -26,7 +26,7 @@ public class ShopBackend {
     @FXML public ChoiceBox<Country> boxCountrySelect;
     @FXML public RadioButton selectPerece, selectRefri, selectEnla;
     @FXML private Label idLabel,codLabel,tempLabel, dateLabelProduct;
-    @FXML public TextField searchClientSale, valueProductField, tempField, stockField, idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, idProduct, codigoTextField, productField;
+    @FXML public TextField searchClientSale, valueProductField, tempField, stockField, idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, idProduct, codigoTextField, productField, searchFieldProducts;
     @FXML public DatePicker birthInput, datePick;
     @FXML public TextArea detailField;
     @FXML public TableView<Client> tableClients;
@@ -37,7 +37,7 @@ public class ShopBackend {
     @FXML private TableColumn<Product, Integer> stockCol;
     @FXML private TableColumn<Product, Double> valorCol;
     @FXML public Button closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient,
-            updateButtonSales;
+            updateButtonSales, updateButtonProduct, deleteButonProduct, addProduct, closeModalProducts;
     @FXML public Label labelSaleName, labelSaleId, labelSaleAddress, labelSalePhone, labelSaleDate, labelSerie, labelSubTotal,
             labelIva, labelTotal;
     //Products, clients and sales List
@@ -67,7 +67,13 @@ public class ShopBackend {
             filterAndShowMatches(searchQuery);
         });
 
+        searchFieldProducts.setOnKeyReleased(event -> {
+            String searchQuery = searchFieldProducts.getText();
+            filterAndShowMatchesProduct(searchQuery);
+        });
+
         tableClients.setRowFactory(tv -> selectItemRowClient());
+        tableViewProducts.setRowFactory(tv -> selectItemRowProduct());
 
         ToggleGroup toggleGroup = new ToggleGroup();
         selectPerece.setToggleGroup(toggleGroup);
@@ -300,37 +306,142 @@ public class ShopBackend {
     }
 
     public void resetFormProductRegister(){
-    /**        closeModal.setVisible(false);
-        updateButtonClient.setVisible(false);
-        deleteButonClient.setVisible(false);
-        addClient.setVisible(true);
-        typeClientSelect.setDisable(false);
-        idInput.setDisable(false);
-        nameInput.setDisable(false);
-        lastNameInput.setDisable(false); */
-
+        idProduct.setDisable(false);
+        productField.setDisable(false);
+        detailField.setDisable(false);
+        addProduct.setVisible(true);
+        selectPerece.setDisable(false);
+        selectRefri.setDisable(false);
+        selectEnla.setDisable(false);
         idProduct.setText("");
         productField.setText("");
         detailField.setText("");
-        selectPerece.setSelected(true);
+        valueProductField.setText("");
         stockField.setText("");
-        datePick.setValue(null);
         codigoTextField.setText("");
         tempField.setText("");
-        valueProductField.setText("");
+        datePick.setValue(null);
+        selectPerece.setSelected(true);
+        boxDate.setVisible(true);
+        boxTemperatura.setVisible(false);
+        boxCodigo.setVisible(false);
         boxCountry.setVisible(false);
         boxCountrySelect.setValue(Country.ARGENTINA);
+        dateLabelProduct.setText("Vencimiento:");
+        updateButtonProduct.setVisible(false);
+        deleteButonProduct.setVisible(false);
+
+        /**        closeModal.setVisible(false);
+         deleteButonClient.setVisible(false);
+         addClient.setVisible(true);
+         typeClientSelect.setDisable(false);
+         idInput.setDisable(false);
+         nameInput.setDisable(false);
+         lastNameInput.setDisable(false); */
     }
 
-    public void addProductList() {
-        if (selectPerece.isSelected()) {
-           // String idProduct, String title, String description, double value, int stock,Date dueDate
-            Perishable newProduct = new Perishable(idProduct.getText(), productField.getText(), "Perecedero",
-                    Integer.valueOf(stockField.getText()), Integer.valueOf(valueProductField.getText()), datePick.getValue());
-            listProduct.add(newProduct);
-        } else if(selectRefri.isSelected()){
+    public void resetFormProductUpdate(Product producto){
+        /**closeModalProducts.setVisible(true);
+         updateButtonClient.setVisible(true);
+         deleteButonClient.setVisible(true);
+         addClient.setVisible(false);
+         backButtonData.setDisable(true);
+         */
+        backButtonData.setDisable(true);
+        updateButtonProduct.setVisible(true);
+        deleteButonProduct.setVisible(true);
+        addProduct.setVisible(false);
+        selectPerece.setDisable(true);
+        selectRefri.setDisable(true);
+        selectEnla.setDisable(true);
 
+        idProduct.setText(producto.getIdProduct());
+        idProduct.setDisable(true);
+        productField.setText(producto.getTitle());
+        productField.setDisable(true);
+        detailField.setText(producto.getDescription());
+        detailField.setDisable(true);
+        stockField.setText(String.valueOf(producto.getStock()));
+        valueProductField.setText(String.valueOf(producto.getValue()));
+        idInput.setDisable(true);
+        nameInput.setDisable(true);
+        lastNameInput.setDisable(true);
+        if(producto instanceof Perishable){
+            selectPerece.setSelected(true);
+            dynamicFormProducts();
+            datePick.setValue(((Perishable) producto).getDueDate());
+            datePick.setDisable(true);
+        }else if(producto instanceof Refrigerate) {
+            selectRefri.setSelected(true);
+            dynamicFormProducts();
+            tempField.setText(String.valueOf(((Refrigerate) producto).getTemperature()));
+            codigoTextField.setText(((Refrigerate) producto).getAprovationCode());
+        }else if(producto instanceof Canned) {
+            selectEnla.setSelected(true);
+            dynamicFormProducts();
+            datePick.setValue(((Canned) producto).getBatchDate());
+            codigoTextField.setText(String.valueOf(((Canned) producto).getWeigth()));
         }
+    }
+
+    public TableRow<Product> selectItemRowProduct(){
+        TableRow<Product> row = new TableRow<>();
+        row.setOnMouseClicked(event -> {
+            if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                Product clickedProduct = row.getItem();
+                for (Product product:listProduct) {
+                    if (clickedProduct.getIdProduct().equals(product.getIdProduct())){
+                        productsRegisterPage.setVisible(true);
+                        resetFormProductUpdate(product);
+                        break;
+                    }
+                }
+            }
+
+        });
+        return row;
+    }
+    public void addProductList(){
+        if (selectPerece.isSelected()) {
+            Perishable newProduct = new Perishable(idProduct.getText(), productField.getText(), "Perecedero",
+                    Integer.valueOf(stockField.getText()), Double.valueOf(valueProductField.getText()), datePick.getValue());
+            listProduct.add(newProduct);
+            System.out.println("agregado perecedero");
+        } else if(selectRefri.isSelected()){
+            Refrigerate newProduct = new Refrigerate(idProduct.getText(), productField.getText(), "Refrigerado", Integer.valueOf(stockField.getText()), Double.valueOf(valueProductField.getText()), codigoTextField.getText(), Double.valueOf(tempField.getText()));
+            listProduct.add(newProduct);
+            System.out.println("agregado refrigerado");
+        } else if(selectEnla.isSelected()){
+            Canned newProduct = new Canned(idProduct.getText(), productField.getText(), "Envasado", Integer.valueOf(stockField.getText()), Double.valueOf(valueProductField.getText()), datePick.getValue(), Double.valueOf(codigoTextField.getText()), boxCountrySelect.getValue());
+            listProduct.add(newProduct);
+            System.out.println("agregado enlatado");
+        }
+    }
+
+    public void deleteProduct(String id){
+        listProduct.removeIf(product -> id.equals(product.getIdProduct()));
+        productsRegisterPage.setVisible(false);
+        alertUpdateDelete("Se ha eliminado con exitosamente");
+    }
+
+    public void updateProduct(){
+        listProduct.forEach(product -> {
+            if (product instanceof Perishable && idProduct.getText().equals(product.getIdProduct())) {
+                Perishable perishable = (Perishable) product;
+                Perishable update = new Perishable(idProduct.getText(), productField.getText(), "Perecedero",
+                        Integer.valueOf(stockField.getText()), Double.valueOf(valueProductField.getText()), datePick.getValue());
+                listProduct.set(listProduct.indexOf(perishable), update);
+            } else if (product instanceof Refrigerate && idProduct.getText().equals(product.getIdProduct())){
+                Refrigerate refrigerate = (Refrigerate) product;
+                Refrigerate update = new Refrigerate(idProduct.getText(), productField.getText(), "Refrigerado", Integer.valueOf(stockField.getText()), Double.valueOf(valueProductField.getText()), codigoTextField.getText(), Double.valueOf(tempField.getText()));
+                listProduct.set(listProduct.indexOf(refrigerate), update);
+            }else if (product instanceof Refrigerate && idProduct.getText().equals(product.getIdProduct())){
+                Canned refrigerate = (Canned) product;
+                Canned update = new Canned (idProduct.getText(), productField.getText(), "Envasado", Integer.valueOf(stockField.getText()), Double.valueOf(valueProductField.getText()), datePick.getValue(), Double.valueOf(codigoTextField.getText()), boxCountrySelect.getValue());
+                listProduct.set(listProduct.indexOf(refrigerate), update);
+            }
+        });
+        productsRegisterPage.setVisible(false);
     }
 
     public void getProductList(){
@@ -353,4 +464,29 @@ public class ShopBackend {
         return name;
     }
 
+    public void filterAndShowMatchesProduct(String searchQuery) {
+        if (searchQuery.isEmpty()){
+            tableViewProducts.setItems(listProduct);
+        } else {
+            ObservableList<Product> filteredProduct = FXCollections.observableArrayList();
+
+            for (Product product : listProduct) {
+                if (product.getIdProduct().startsWith(searchQuery)) {
+                    filteredProduct.add(product);
+                }
+            }
+            tableViewProducts.setItems(filteredProduct);
+        }
+    }
+
+    public static Product filterProduct(ObservableList<Product> listProduct, String id) {
+        return listProduct.stream()
+                .filter(product -> product.getIdProduct().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public static <Type> Boolean existIntoArrayProduct(String idItem, ObservableList<Type> list, Function<Type, String> idList){
+        return list.stream().anyMatch(idExist -> idList.apply(idExist).equals(idItem));
+    }
 }

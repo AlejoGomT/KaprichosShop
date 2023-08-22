@@ -52,7 +52,7 @@ public class Store {
 
 
     public boolean createProductRefrigerate(String idProduct, String title, String description, double value, int stock, String aprovationCode, float temperature) {
-        Refrigerate productRefrigerate = new Refrigerate(idProduct, title, description, value, stock, aprovationCode, temperature);
+        Refrigerate productRefrigerate = new Refrigerate(idProduct, title, description, stock, value, aprovationCode, temperature);
         if (listProduct.contains(productRefrigerate)) {
             return false;
         }
@@ -60,7 +60,7 @@ public class Store {
         return true;
     }
 
-    public boolean createProductCanned(String idProduct, String title, String description,  int stock, double value, Date batchDate, float weigth, Country country) {
+    public boolean createProductCanned(String idProduct, String title, String description,  int stock, double value, LocalDate batchDate, float weigth, Country country) {
         Canned productCanned = new Canned(idProduct, title, description,  stock, value, batchDate, weigth, country);
         if (listProduct.contains(productCanned)) {
             return false;
@@ -101,7 +101,7 @@ public class Store {
 
     //Update Area
     public boolean updateProductRefrigerate(String idProduct, String title, String description, double value, int stock, String aprovationCode, float temperature) {
-        Refrigerate productRefrigerate = new Refrigerate(idProduct, title, description, value, stock, aprovationCode, temperature);
+        Refrigerate productRefrigerate = new Refrigerate(idProduct, title, description,stock, value, aprovationCode, temperature);
         if (listProduct.contains(productRefrigerate)) {
             int i = listProduct.indexOf(productRefrigerate);
             listProduct.set(i, productRefrigerate);
@@ -110,7 +110,7 @@ public class Store {
         return false;
     }
 
-    public boolean updateProductCanned(String idProduct, String title, String description, int stock,  double value, Date batchDate, float weigth, Country country) {
+    public boolean updateProductCanned(String idProduct, String title, String description, int stock,  double value, LocalDate batchDate, float weigth, Country country) {
         Canned productCanned = new Canned(idProduct, title, description,  stock, value, batchDate, weigth, country);
         if (listProduct.contains(productCanned)) {
             int i = listProduct.indexOf(productCanned);
