@@ -7,6 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import shop.develop.kaprichosshop.model.Client;
 
+import java.time.LocalDate;
+
 public class ShopController extends ShopBackend{
     //Controls elements from fxml
     @FXML private AnchorPane pageHome, salesContainer, productsContainer, clientsContainer;
@@ -84,8 +86,17 @@ public class ShopController extends ShopBackend{
 
     //Register Buttons: Sales, Clients and Products
     public void clickRegisterSale(ActionEvent event){
+        resetFormSalesRegister();
         salesDataPage.setVisible(false);
         salesRegisterPage.setVisible(true);
+    }
+    public void clickNewClientSales(ActionEvent event){
+        salesContainer.setVisible(false);
+        salesDataPage.setVisible(true);
+        salesRegisterPage.setVisible(false);
+        clientsContainer.setVisible(true);
+        clientsDataPage.setVisible(false);
+        clientsRegisterPage.setVisible(true);
     }
     public void clickRegisterProduct(ActionEvent event){
         productsDataPage.setVisible(false);
@@ -125,7 +136,7 @@ public class ShopController extends ShopBackend{
             resetFormClientRegister();
         }
     }
-    public void clickSearch(ActionEvent event){
+    public void clickSearchClient(ActionEvent event){
         boolean idExists = false;
 
         for (Client client : listClient) {
@@ -159,7 +170,26 @@ public class ShopController extends ShopBackend{
             alertUpdateDelete("Se a actualizado exitosamente");
         }
     }
+
     public void clickDeleteClient(ActionEvent event){
         deleteClient(idInput.getText());
+    }
+
+    //Controls Sales
+    public void clickSearchClientSale(ActionEvent event){
+        int lastElement = 1;
+        Client saleClient = filterClient(listClient, searchClientSale.getText());
+        LocalDate createAt = LocalDate.now();
+
+        if (!listSale.isEmpty()) {
+            lastElement = listSale.size() + 1;
+        }
+
+        labelSaleId.setText(saleClient.getId());
+        labelSaleName.setText(saleClient.getName() + " " + saleClient.getLastName());
+        labelSalePhone.setText(saleClient.getPhone());
+        labelSaleAddress.setText(saleClient.getAddress());
+        labelSaleDate.setText(createAt.toString());
+        labelSerie.setText(String.format("%4d", lastElement));
     }
 }

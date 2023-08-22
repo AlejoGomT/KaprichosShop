@@ -1,18 +1,20 @@
 package shop.develop.kaprichosshop.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Sale {
     private String idSale;
-    private Date date;
+    private LocalDate date;
     private Double total;
     private double tax;
     protected Client buyer;
     private ArrayList<DetailSale> detailSale;
 
-    public Sale(String idSale, Date date, Double total, double tax, Client buyer, ArrayList<DetailSale> detailSale) {
+    public Sale(String idSale, LocalDate date, Double total, double tax, Client buyer, ArrayList<DetailSale> detailSale) {
         this.idSale = idSale;
         this.date = date;
         this.buyer = buyer;
@@ -25,7 +27,7 @@ public class Sale {
         return idSale;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

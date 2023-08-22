@@ -1,4 +1,5 @@
 package shop.develop.kaprichosshop;
+import shop.develop.kaprichosshop.model.*;
 
 
 import javafx.collections.FXCollections;
@@ -8,9 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import shop.develop.kaprichosshop.model.Client;
-import shop.develop.kaprichosshop.model.Legal;
-import shop.develop.kaprichosshop.model.Natural;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.function.Function;
@@ -23,12 +21,17 @@ public class ShopBackend {
     @FXML public HBox formEmail, formBirth;
     @FXML public ChoiceBox<String> typeClientSelect;
     @FXML private Label idLabel;
-    @FXML public TextField idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField;
+    @FXML public TextField idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, searchClientSale;
     @FXML public DatePicker birthInput;
     @FXML public TableView<Client> tableClients;
     @FXML private TableColumn<Client, String> columnId, columnName, columnLastName, columnPhone, columnAddress;
-    @FXML public Button closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient;
+    @FXML public Button closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient,
+            updateButtonSales;
+    @FXML public Label labelSaleName, labelSaleId, labelSaleAddress, labelSalePhone, labelSaleDate, labelSerie, labelSubTotal,
+            labelIva, labelTotal;
     //Products, clients and sales List
+
+    public ObservableList<Sale> listSale = FXCollections.observableArrayList();
     public ObservableList<Client> listClient = FXCollections.observableArrayList();
 
     //Set values at the component BoxChoise with fx:id = 'typeClientSelect'
@@ -215,6 +218,25 @@ public class ShopBackend {
     public void deleteClient(String id){
         listClient.removeIf(client -> id.equals(client.getId()));
         alertUpdateDelete("Se a eliminado con exitosamente");
+    }
+
+    //Sales
+    public void resetFormSalesRegister(){
+        updateButtonSales.setVisible(false);
+
+        labelSaleId.setText("");
+        labelSaleName.setText("");
+        labelSalePhone.setText("");
+        labelSaleAddress.setText("");
+        labelSaleDate.setText("");
+        labelSerie.setText("");
+    }
+
+    public static Client filterClient(ObservableList<Client> clientList, String id) {
+            return clientList.stream()
+                    .filter(client -> client.getId().equals(id))
+                    .findFirst()
+                    .orElse(null);
     }
 
     public static <Type> Boolean existIntoArray(String idItem, ObservableList<Type> list, Function<Type, String> idList){
