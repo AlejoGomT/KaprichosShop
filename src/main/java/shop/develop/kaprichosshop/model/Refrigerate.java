@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Refrigerate extends Product{
     private String aprovationCode;
-    private float temperature;
+    private double temperature;
 
-    public Refrigerate(String idProduct, String title, String description, double value, int stock,String aprovationCode, float temperature) {
+    public Refrigerate(String idProduct, String title, String description, int stock, double value,String aprovationCode, double temperature) {
         super(idProduct, title, description, stock, value);
         this.aprovationCode = aprovationCode;
         this.temperature = temperature;
@@ -20,11 +20,11 @@ public class Refrigerate extends Product{
         this.aprovationCode = aprovationCode;
     }
 
-    public Float getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(float temperature) {
+    public void setTemperature(double temperature) {
         temperature = temperature;
     }
 
