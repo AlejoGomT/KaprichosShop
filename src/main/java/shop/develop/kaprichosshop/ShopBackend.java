@@ -1,4 +1,5 @@
 package shop.develop.kaprichosshop;
+import shop.develop.kaprichosshop.model.*;
 
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -11,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import shop.develop.kaprichosshop.model.*;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.function.Function;
@@ -26,7 +26,7 @@ public class ShopBackend {
     @FXML public ChoiceBox<Country> boxCountrySelect;
     @FXML public RadioButton selectPerece, selectRefri, selectEnla;
     @FXML private Label idLabel,codLabel,tempLabel, dateLabelProduct;
-    @FXML public TextField valueProductField, tempField, stockField, idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, idProduct, codigoTextField, productField;
+    @FXML public TextField searchClientSale, valueProductField, tempField, stockField, idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, idProduct, codigoTextField, productField;
     @FXML public DatePicker birthInput, datePick;
     @FXML public TextArea detailField;
     @FXML public TableView<Client> tableClients;
@@ -36,8 +36,13 @@ public class ShopBackend {
     @FXML private TableColumn<Product, String> codigoCol, productCol, typeCol;
     @FXML private TableColumn<Product, Integer> stockCol;
     @FXML private TableColumn<Product, Double> valorCol;
-    @FXML public Button closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient;
+    @FXML public Button closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient,
+            updateButtonSales;
+    @FXML public Label labelSaleName, labelSaleId, labelSaleAddress, labelSalePhone, labelSaleDate, labelSerie, labelSubTotal,
+            labelIva, labelTotal;
     //Products, clients and sales List
+
+    public ObservableList<Sale> listSale = FXCollections.observableArrayList();
     public ObservableList<Client> listClient = FXCollections.observableArrayList();
     public ObservableList<Product> listProduct = FXCollections.observableArrayList();
     public ObservableList<Country> listCountries = FXCollections.observableArrayList();
@@ -240,6 +245,25 @@ public class ShopBackend {
     public void deleteClient(String id){
         listClient.removeIf(client -> id.equals(client.getId()));
         alertUpdateDelete("Se a eliminado con exitosamente");
+    }
+
+    //Sales
+    public void resetFormSalesRegister(){
+        updateButtonSales.setVisible(false);
+
+        labelSaleId.setText("");
+        labelSaleName.setText("");
+        labelSalePhone.setText("");
+        labelSaleAddress.setText("");
+        labelSaleDate.setText("");
+        labelSerie.setText("");
+    }
+
+    public static Client filterClient(ObservableList<Client> clientList, String id) {
+            return clientList.stream()
+                    .filter(client -> client.getId().equals(id))
+                    .findFirst()
+                    .orElse(null);
     }
 
     public static <Type> Boolean existIntoArray(String idItem, ObservableList<Type> list, Function<Type, String> idList){

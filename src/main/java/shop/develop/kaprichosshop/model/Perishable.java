@@ -7,8 +7,8 @@ import java.util.Objects;
 public class Perishable extends Product {
     private LocalDate dueDate;
 
-    public Perishable(String idProduct, String title, String description, double value, int stock, LocalDate dueDate) {
-        super(idProduct, title, description, value, stock);
+    public Perishable(String idProduct, String title, String description, int stock, double value, LocalDate dueDate) {
+        super(idProduct, title, description,  stock, value);
         this.dueDate = dueDate;
 
     }

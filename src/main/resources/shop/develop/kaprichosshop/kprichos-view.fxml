@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -69,7 +70,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="salesContainer" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="salesContainer" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="salesDataPage" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -142,7 +143,7 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="salesRegisterPage" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="salesRegisterPage" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -187,12 +188,12 @@
                                  <graphic>
                                     <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="33.0" prefWidth="216.0" style="-fx-spacing: 10;">
                                        <children>
-                                          <TextField prefHeight="25.0" prefWidth="150.0" promptText="ID/NIT Cliente" style="-fx-border-color: #012C31; -fx-border-radius: 5;">
+                                          <TextField fx:id="searchClientSale" prefHeight="25.0" prefWidth="150.0" promptText="ID/NIT Cliente" style="-fx-border-color: #012C31; -fx-border-radius: 5;">
                                              <HBox.margin>
                                                 <Insets bottom="3.0" left="3.0" top="3.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <Button mnemonicParsing="false" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                                          <Button mnemonicParsing="false" onAction="#clickSearchClientSale" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
                                              <graphic>
                                                 <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
                                                    <image>
@@ -208,7 +209,7 @@
                                     <Insets left="10.0" top="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="120.0" styleClass="btnSecondary" text="Nuevo Cliente" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                              <Button mnemonicParsing="false" onAction="#clickNewClientSales" prefHeight="22.0" prefWidth="120.0" styleClass="btnSecondary" text="Nuevo Cliente" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                  <GridPane.margin>
                                     <Insets right="10.0" top="5.0" />
                                  </GridPane.margin>
@@ -216,7 +217,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="2">
                                  <children>
                                     <Label prefWidth="60.0" styleClass="labelInf" text="Cliente:" />
-                                    <Label styleClass="labelData" text="Alejandro Gomez Trejos" />
+                                    <Label fx:id="labelSaleName" styleClass="labelData" text="Alejandro Gomez Trejos" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="10.0" />
@@ -225,7 +226,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="3">
                                  <children>
                                     <Label prefWidth="60.0" styleClass="labelInf" text="Doc/NIT:" />
-                                    <Label styleClass="labelData" text="1005095771" />
+                                    <Label fx:id="labelSaleId" styleClass="labelData" text="1005095771" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="10.0" />
@@ -234,7 +235,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="4">
                                  <children>
                                     <Label prefWidth="60.0" styleClass="labelInf" text="Direccion:" />
-                                    <Label styleClass="labelData" text="Kr 21 #20-01 Esquina Apt 705" />
+                                    <Label fx:id="labelSaleAddress" styleClass="labelData" text="Kr 21 #20-01 Esquina Apt 705" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="10.0" />
@@ -243,7 +244,7 @@
                               <HBox alignment="CENTER" prefHeight="20.0" prefWidth="183.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                                  <children>
                                     <Label prefHeight="17.0" prefWidth="25.0" styleClass="labelNumber" text="No." />
-                                    <Label styleClass="labelNumber" text="0001" />
+                                    <Label fx:id="labelSerie" styleClass="labelNumber" text="0001" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
@@ -252,7 +253,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <children>
                                     <Label prefWidth="60.0" styleClass="labelInf" text="Telefono:" />
-                                    <Label styleClass="labelData" text="3212000824" />
+                                    <Label fx:id="labelSalePhone" styleClass="labelData" text="3212000824" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="10.0" />
@@ -261,7 +262,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
                                     <Label prefWidth="60.0" styleClass="labelInf" text="Fecha:" />
-                                    <Label styleClass="labelData" text="14/08/2023" />
+                                    <Label fx:id="labelSaleDate" styleClass="labelData" text="14/08/2023" />
                                  </children>
                                  <GridPane.margin>
                                     <Insets left="10.0" />
@@ -270,17 +271,17 @@
                            </children>
                         </GridPane>
                      </graphic></Label>
-                  <TableView fixedCellSize="0.0" layoutX="125.0" layoutY="239.0" prefHeight="124.0" prefWidth="500.0" styleClass="table" AnchorPane.bottomAnchor="80.0">
+                  <TableView fx:id="tableSales" fixedCellSize="0.0" layoutX="125.0" layoutY="239.0" prefHeight="124.0" prefWidth="500.0" styleClass="table" AnchorPane.bottomAnchor="80.0">
                      <columns>
-                        <TableColumn maxWidth="77.0" minWidth="77.0" prefWidth="77.0" text="Cant.">
+                        <TableColumn fx:id="columnAmount" maxWidth="77.0" minWidth="77.0" prefWidth="77.0" text="Cant.">
                            <styleClass>
                               <String fx:value="column" />
                               <String fx:value="startColumn" />
                            </styleClass>
                         </TableColumn>
-                        <TableColumn maxWidth="210.0" minWidth="210.0" prefWidth="210.0" styleClass="column" text="Concepto" />
-                        <TableColumn maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="column" text="Precio" />
-                        <TableColumn maxWidth="105.0" minWidth="105.0" prefWidth="105.0" text="Importe">
+                        <TableColumn fx:id="columnDescription" maxWidth="210.0" minWidth="210.0" prefWidth="210.0" styleClass="column" text="Concepto" />
+                        <TableColumn fx:id="columnPrice" maxWidth="105.0" minWidth="105.0" prefWidth="105.0" styleClass="column" text="Precio" />
+                        <TableColumn fx:id="columnAccumulated" maxWidth="105.0" minWidth="105.0" prefWidth="105.0" text="Importe">
                            <styleClass>
                               <String fx:value="endColumn" />
                               <String fx:value="column" />
@@ -297,19 +298,19 @@
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                  <children>
                                     <Label styleClass="totalTextStyle" text="Sub Total:" />
-                                    <Label alignment="CENTER" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" textAlignment="CENTER" />
+                                    <Label fx:id="labelSubTotal" alignment="CENTER" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" textAlignment="CENTER" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                  <children>
                                     <Label styleClass="totalTextStyle" text="IVA:" />
-                                    <Label alignment="CENTER" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" />
+                                    <Label fx:id="labelIva" alignment="CENTER" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                  <children>
                                     <Label styleClass="totalTextStyle" text="Total:" />
-                                    <Label alignment="CENTER" prefHeight="17.0" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" />
+                                    <Label fx:id="labelTotal" alignment="CENTER" prefHeight="17.0" prefWidth="105.0" styleClass="totalStyle" text="\$123.123" />
                                  </children>
                               </HBox>
                            </children>
@@ -374,7 +375,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="productsContainer" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="productsContainer" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="productsDataPage" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -441,7 +442,7 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="productsRegisterPage" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="productsRegisterPage" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -637,7 +638,7 @@
                                     <Insets bottom="3.0" left="3.0" top="3.0" />
                                  </HBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" onAction="#clickSearch" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
+                              <Button mnemonicParsing="false" onAction="#clickSearchClient" prefHeight="13.0" prefWidth="16.0" styleClass="btnSecondary">
                                  <graphic>
                                     <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
                                        <image>
