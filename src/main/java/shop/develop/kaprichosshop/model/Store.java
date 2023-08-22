@@ -178,7 +178,7 @@ public class Store {
      * Del detalle de la venta se debe registrar la cantidad de productos vendidos, el subtotal, el producto vendido(relación).
      */
 
-    public boolean createSale(String idSale, Date date, double tax, Client buyer, ArrayList<DetailSale> detailSale) {
+    public boolean createSale(String idSale, LocalDate date, double tax, Client buyer, ArrayList<DetailSale> detailSale) {
         double total = detailSale.stream().mapToDouble(DetailSale::getSubTotal).sum();
         Sale sale = new Sale(idSale, date, total, tax, buyer, detailSale);
         if (listSale.contains(sale)) {
