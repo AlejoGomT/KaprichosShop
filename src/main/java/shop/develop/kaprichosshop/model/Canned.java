@@ -1,32 +1,33 @@
 package shop.develop.kaprichosshop.model;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class Canned  extends Product{
-    private Date batchDate;
-    private float weigth;
+    private LocalDate batchDate;
+    private double weigth;
     private Country country;
 
-    public Canned(String idProduct, String title, String description, int stock, double value, Date batchDate, float weigth, Country country) {
+    public Canned(String idProduct, String title, String description, int stock, double value, LocalDate batchDate, double weigth, Country country) {
         super(idProduct, title, description,  stock, value);
         this.batchDate = batchDate;
         this.weigth = weigth;
         this.country = country;
     }
 
-    public Date getBatchDate() {
+    public LocalDate getBatchDate() {
         return batchDate;
     }
 
-    public void setBatchDate(Date batchDate) {
+    public void setBatchDate(LocalDate batchDate) {
         this.batchDate = batchDate;
     }
 
-    public float getWeigth() {
+    public double getWeigth() {
         return weigth;
     }
 
-    public void setWeigth(float weigth) {
+    public void setWeigth(double weigth) {
         this.weigth = weigth;
     }
 

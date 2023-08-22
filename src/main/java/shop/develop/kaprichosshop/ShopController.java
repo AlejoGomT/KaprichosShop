@@ -1,13 +1,17 @@
 package shop.develop.kaprichosshop;
 
 import javafx.application.Platform;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import shop.develop.kaprichosshop.model.Client;
+import shop.develop.kaprichosshop.model.Product;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ShopController extends ShopBackend{
     //Controls elements from fxml
@@ -99,9 +103,10 @@ public class ShopController extends ShopBackend{
         clientsRegisterPage.setVisible(true);
     }
     public void clickRegisterProduct(ActionEvent event){
+        resetFormProductRegister();
         productsDataPage.setVisible(false);
         productsRegisterPage.setVisible(true);
-        resetFormProductRegister();
+
     }
     public void clickRegisterClient(ActionEvent event){
         resetFormClientRegister();
@@ -137,6 +142,7 @@ public class ShopController extends ShopBackend{
             resetFormClientRegister();
         }
     }
+
     public void clickSearchClient(ActionEvent event){
         boolean idExists = false;
 
@@ -193,4 +199,36 @@ public class ShopController extends ShopBackend{
         labelSaleDate.setText(createAt.toString());
         labelSerie.setText(String.format("%4d", lastElement));
     }
+
+    public void clickAddProduct(ActionEvent event){
+        addProductList();
+        resetFormProductRegister();
+    }
+
+    public void clickUpdateProduct(ActionEvent event){
+            updateProduct();
+            alertUpdateDelete("Se ha actualizado exitosamente");
+    }
+
+    public void clickDeleteProduct(ActionEvent event){
+        deleteProduct(idProduct.getText());
+    }
+
+    public void clickSearchProduct(ActionEvent event){
+        boolean idExists = false;
+
+        for (Product product : listProduct) {
+            if (product.getIdProduct().equals(searchFieldProducts.getText())) {
+                idExists = true;
+                break;
+            }
+        }
+
+        if (!idExists) {
+            alertNomatch("El producto con el Id" + searchFieldProducts.getText() + " no existe en el sistema.");
+        }
+        tableViewProducts.setItems(listProduct);
+        searchFieldProducts.setText("");
+    }
+
 }
