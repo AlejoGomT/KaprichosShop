@@ -13,7 +13,6 @@ import shop.develop.kaprichosshop.model.Legal;
 import shop.develop.kaprichosshop.model.Natural;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

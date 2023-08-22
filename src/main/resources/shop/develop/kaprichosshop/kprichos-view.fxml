@@ -70,9 +70,9 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="salesContainer" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="salesContainer" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="salesDataPage" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="salesDataPage" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -143,7 +143,7 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="salesRegisterPage" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="salesRegisterPage" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="482.0" layoutX="144.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -317,6 +317,7 @@
                         </VBox>
                      </graphic>
                   </Label>
+                  <Button fx:id="updateButtonSales" layoutX="125.0" layoutY="389.0" mnemonicParsing="false" styleClass="btnUpdate" text="Actualizar" visible="false" />
                   <Pane fx:id="modalPaneOfSale" layoutX="189.0" layoutY="84.0" prefHeight="300.0" prefWidth="500.0" styleClass="modalStyle" visible="false" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="75.0">
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="206.0">
@@ -466,7 +467,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="73.0" layoutY="119.0" prefHeight="294.0" prefWidth="604.0" styleClass="labelForm">
+                  <Label layoutX="73.0" layoutY="119.0" prefHeight="321.0" prefWidth="604.0" styleClass="labelForm">
                      <graphic>
                         <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="130.0" prefWidth="500.0">
                            <columnConstraints>
@@ -475,7 +476,8 @@
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints />
-                              <RowConstraints maxHeight="61.0" minHeight="40.0" percentHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="35.0" minHeight="33.0" prefHeight="33.0" />
+                              <RowConstraints maxHeight="61.0" minHeight="40.0" percentHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="60.0" minHeight="60.0" percentHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -483,7 +485,7 @@
                               <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="1">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="2">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="SKU Producto:" />
                                     <TextField prefWidth="146.0" promptText="SKU" />
@@ -492,7 +494,7 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <children>
                                     <Label prefWidth="80.0" styleClass="labelInf" text="Producto:" />
                                     <TextField prefWidth="155.0" promptText="Nombre del producto" />
@@ -501,7 +503,7 @@
                                     <Insets right="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Descripcion:" />
                                     <TextArea prefHeight="60.0" prefWidth="403.0" />
@@ -510,7 +512,7 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Tipo de producto:" />
                                     <CheckBox mnemonicParsing="false" styleClass="labelData" text="Perecederos" />
@@ -521,7 +523,7 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <children>
                                     <Label prefWidth="80.0" styleClass="labelInf" text="Vencimiento:" />
                                     <DatePicker prefWidth="155.0" promptText="Date" />
@@ -530,7 +532,7 @@
                                     <Insets right="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="4">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="5">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Stock:" />
                                     <TextField promptText="Cant. Productos" />
@@ -539,8 +541,8 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <Button mnemonicParsing="false" styleClass="btnSecondary" text="Agregar" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="5">
+                              <Button fx:id="addProduct" mnemonicParsing="false" styleClass="btnSecondary" text="Agregar" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="6">
                                  <children>
                                     <Label prefWidth="110.0" styleClass="labelInf" text="Cod. Aprovacion:" />
                                     <TextField promptText="Cod. de calidad" />
@@ -549,7 +551,7 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <children>
                                     <Label prefWidth="80.0" styleClass="labelInf" text="Temperatura:" />
                                     <TextField prefWidth="155.0" promptText="Cod. de calidad" />
@@ -558,16 +560,30 @@
                                     <Insets right="40.0" />
                                  </padding>
                               </HBox>
+                              <Button fx:id="closeModalProducts" mnemonicParsing="false" styleClass="btnSecondary" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <graphic>
+                                    <ImageView fitHeight="16.0" fitWidth="15.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@images/icons8-eliminar-30.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="deleteButonProduct" mnemonicParsing="false" styleClass="btnDanger" text="Borrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                              <Button fx:id="updateButtonProduct" mnemonicParsing="false" styleClass="btnUpdate" text="Actualizar" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
                      </graphic>
                   </Label>
-                  <Label alignment="CENTER" layoutX="293.0" layoutY="104.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Productos" />
+                  <Label alignment="CENTER" layoutX="293.0" layoutY="91.0" prefHeight="30.0" prefWidth="165.0" styleClass="labelTitle" text="Productos" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="clientsContainer" layoutX="20.0" layoutY="20.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="clientsContainer" layoutX="20.0" layoutY="20.0" prefHeight="450.0" prefWidth="750.0" styleClass="bgGradient" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="clientsDataPage" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
