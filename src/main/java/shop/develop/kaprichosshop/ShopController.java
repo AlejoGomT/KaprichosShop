@@ -90,6 +90,7 @@ public class ShopController extends ShopBackend{
     public void clickRegisterProduct(ActionEvent event){
         productsDataPage.setVisible(false);
         productsRegisterPage.setVisible(true);
+        resetFormProductRegister();
     }
     public void clickRegisterClient(ActionEvent event){
         resetFormClientRegister();

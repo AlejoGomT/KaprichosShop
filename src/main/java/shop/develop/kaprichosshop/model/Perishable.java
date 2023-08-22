@@ -1,22 +1,23 @@
 package shop.develop.kaprichosshop.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class Perishable extends Product {
-    private Date dueDate;
+    private LocalDate dueDate;
 
-    public Perishable(String idProduct, String title, String description, double value, int stock,Date dueDate) {
+    public Perishable(String idProduct, String title, String description, double value, int stock, LocalDate dueDate) {
         super(idProduct, title, description, value, stock);
         this.dueDate = dueDate;
 
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 

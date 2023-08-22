@@ -21,25 +21,17 @@ public class Client {
         return id;
     }
 
-
-
     public String getName() {
         return name;
     }
-
-
 
     public String getLastName() {
         return lastName;
     }
 
-
-
     public String getAddress() {
         return address;
     }
-
-
 
     public String getPhone() {
         return phone;
