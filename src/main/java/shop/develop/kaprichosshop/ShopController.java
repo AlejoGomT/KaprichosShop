@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import shop.develop.kaprichosshop.model.Client;
-import shop.develop.kaprichosshop.model.Natural;
 
 public class ShopController extends ShopBackend{
     //Controls elements from fxml
