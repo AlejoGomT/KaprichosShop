@@ -60,8 +60,8 @@ public class Store {
         return true;
     }
 
-    public boolean createProductCanned(String idProduct, String title, String description, double value, int stock, Date batchDate, float weigth, Country country) {
-        Canned productCanned = new Canned(idProduct, title, description, value, stock, batchDate, weigth, country);
+    public boolean createProductCanned(String idProduct, String title, String description,  int stock, double value, Date batchDate, float weigth, Country country) {
+        Canned productCanned = new Canned(idProduct, title, description,  stock, value, batchDate, weigth, country);
         if (listProduct.contains(productCanned)) {
             return false;
         }
@@ -69,8 +69,8 @@ public class Store {
         return true;
     }
 
-    public boolean createProductPerishable(String idProduct, String title, String description, double value, int stock, Date dueDate) {
-        Perishable productPerishable = new Perishable(idProduct, title, description, value, stock, dueDate);
+    public boolean createProductPerishable(String idProduct, String title, String description,int stock, double value, LocalDate dueDate) {
+        Perishable productPerishable = new Perishable(idProduct, title, description, stock,value, dueDate);
         if (listProduct.contains(productPerishable)) {
             return false;
         }
@@ -110,8 +110,8 @@ public class Store {
         return false;
     }
 
-    public boolean updateProductCanned(String idProduct, String title, String description, double value, int stock, Date batchDate, float weigth, Country country) {
-        Canned productCanned = new Canned(idProduct, title, description, value, stock, batchDate, weigth, country);
+    public boolean updateProductCanned(String idProduct, String title, String description, int stock,  double value, Date batchDate, float weigth, Country country) {
+        Canned productCanned = new Canned(idProduct, title, description,  stock, value, batchDate, weigth, country);
         if (listProduct.contains(productCanned)) {
             int i = listProduct.indexOf(productCanned);
             listProduct.set(i, productCanned);
@@ -120,8 +120,8 @@ public class Store {
         return false;
     }
 
-    public boolean updateProductPerishable(String idProduct, String title, String description, double value, int stock, Date dueDate) {
-        Perishable productPerishable = new Perishable(idProduct, title, description, value, stock, dueDate);
+    public boolean updateProductPerishable(String idProduct, String title, String description, double value, int stock, LocalDate dueDate) {
+        Perishable productPerishable = new Perishable(idProduct, title, description,  stock,value, dueDate);
         if (listProduct.contains(productPerishable)) {
             int i = listProduct.indexOf(productPerishable);
             listProduct.set(i, productPerishable);
