@@ -7,8 +7,8 @@ public class Canned  extends Product{
     private float weigth;
     private Country country;
 
-    public Canned(String idProduct, String title, String description, double value, int stock,Date batchDate, float weigth, Country country) {
-        super(idProduct, title, description, value, stock);
+    public Canned(String idProduct, String title, String description, int stock, double value, Date batchDate, float weigth, Country country) {
+        super(idProduct, title, description,  stock, value);
         this.batchDate = batchDate;
         this.weigth = weigth;
         this.country = country;

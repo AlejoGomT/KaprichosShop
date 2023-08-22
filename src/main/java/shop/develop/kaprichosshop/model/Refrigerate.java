@@ -7,7 +7,7 @@ public class Refrigerate extends Product{
     private float temperature;
 
     public Refrigerate(String idProduct, String title, String description, double value, int stock,String aprovationCode, float temperature) {
-        super(idProduct, title, description, value, stock);
+        super(idProduct, title, description, stock, value);
         this.aprovationCode = aprovationCode;
         this.temperature = temperature;
     }
