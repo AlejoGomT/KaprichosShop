@@ -7,7 +7,7 @@ public class Product {
     private double value;
     private int stock;
 
-    public Product(String idProduct, String title, String description,int stock, double value) {
+    public Product(String idProduct, String title, String description, int stock, double value) {
         this.idProduct = idProduct;
         this.title = title;
         this.description = description;

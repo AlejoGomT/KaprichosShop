@@ -1,10 +1,9 @@
 package shop.develop.kaprichosshop;
+import javafx.scene.layout.Pane;
 import shop.develop.kaprichosshop.model.*;
 
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,41 +18,58 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ShopBackend {
-    @FXML public AnchorPane clientsDataPage, clientsRegisterPage, productsDataPage, productsRegisterPage,
+    @FXML public Pane paneAdd, modalPaneOfSale;
+    @FXML public AnchorPane pageHome, salesContainer, productsContainer, clientsContainer, clientsDataPage, clientsRegisterPage, productsDataPage, productsRegisterPage,
             salesDataPage, salesRegisterPage;
     @FXML public HBox formEmail, formBirth, boxCodigo, boxTemperatura, boxDate, boxCountry;
     @FXML public ChoiceBox<String> typeClientSelect;
     @FXML public ChoiceBox<Country> boxCountrySelect;
     @FXML public RadioButton selectPerece, selectRefri, selectEnla;
     @FXML private Label idLabel,codLabel,tempLabel, dateLabelProduct;
-    @FXML public TextField searchClientSale, valueProductField, tempField, stockField, idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, idProduct, codigoTextField, productField, searchFieldProducts;
+    @FXML public TextField amountAdd, searchProductsSale, searchClientSale, valueProductField, tempField, stockField, idInput, nameInput, lastNameInput, addressInput, phoneInput, emailInput, searchTextField, idProduct, codigoTextField, productField, searchFieldProducts;
     @FXML public DatePicker birthInput, datePick;
     @FXML public TextArea detailField;
     @FXML public TableView<Client> tableClients;
-
-    @FXML public TableView<Product> tableViewProducts;
     @FXML private TableColumn<Client, String> columnId, columnName, columnLastName, columnPhone, columnAddress;
+    @FXML public TableView<Product> tableViewProducts;
     @FXML private TableColumn<Product, String> codigoCol, productCol, typeCol;
     @FXML private TableColumn<Product, Integer> stockCol;
     @FXML private TableColumn<Product, Double> valorCol;
-    @FXML public Button closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient,
+    @FXML public TableView<DetailSale> tableSales;
+    @FXML public TableColumn<DetailSale, Integer> columnAmount;
+    @FXML public TableColumn<DetailSale, String> columnDescription;
+    @FXML public TableColumn<DetailSale, Double> columnPrice, columnAccumulated;
+    @FXML public TableView<Product> tableAddProductsSale;
+    @FXML public TableColumn<Product, String> idProductsSale, nameProductsSale;
+    @FXML public TableColumn<Product, Double> priceProductsSale;
+    @FXML private TableColumn<Product, Integer> stockProductsSale;
+    @FXML public Button btnProductSearch, closeModalSale, closeModal, backButtonData, backButtonRegister, updateButtonClient, deleteButonClient, addClient,
             updateButtonSales, updateButtonProduct, deleteButonProduct, addProduct, closeModalProducts;
     @FXML public Label labelSaleName, labelSaleId, labelSaleAddress, labelSalePhone, labelSaleDate, labelSerie, labelSubTotal,
-            labelIva, labelTotal;
+            labelIva, labelTotal, titleAdd, idAdd, stockAdd;
     //Products, clients and sales List
 
     public ObservableList<Sale> listSale = FXCollections.observableArrayList();
+    public ObservableList<DetailSale> listDetail = FXCollections.observableArrayList();
     public ObservableList<Client> listClient = FXCollections.observableArrayList();
     public ObservableList<Product> listProduct = FXCollections.observableArrayList();
     public ObservableList<Country> listCountries = FXCollections.observableArrayList();
 
     //Set values at the component BoxChoice with fx:id = 'typeClientSelect'
     public void initialize() {
+        resetVisibleApp();//Seteo por defecto de la App
+
         getClientList();
         tableClients.setItems(listClient);
 
         getProductList();
         tableViewProducts.setItems(listProduct);
+
+        getConfigurationProductsSale();
+        tableAddProductsSale.setItems(listProduct);
+
+        getConfigurationDetailSale();
+        tableSales.setItems(listDetail);
 
         typeClientSelect.getItems().addAll("Natural", "Juridica");
         typeClientSelect.setValue("Natural");
@@ -74,6 +90,7 @@ public class ShopBackend {
 
         tableClients.setRowFactory(tv -> selectItemRowClient());
         tableViewProducts.setRowFactory(tv -> selectItemRowProduct());
+        tableAddProductsSale.setRowFactory(tv -> selectItemRowProductSale());
 
         ToggleGroup toggleGroup = new ToggleGroup();
         selectPerece.setToggleGroup(toggleGroup);
@@ -82,6 +99,22 @@ public class ShopBackend {
         selectPerece.setOnAction(event -> dynamicFormProducts());
         selectRefri.setOnAction(event -> dynamicFormProducts());
         selectEnla.setOnAction(event -> dynamicFormProducts());
+    }
+
+    public void resetVisibleApp(){
+        pageHome.setVisible(true);
+
+        salesContainer.setVisible(false);
+        salesDataPage.setVisible(true);
+        salesRegisterPage.setVisible(false);
+
+        productsContainer.setVisible(false);
+        productsDataPage.setVisible(true);
+        productsRegisterPage.setVisible(false);
+
+        clientsContainer.setVisible(false);
+        clientsDataPage.setVisible(true);
+        clientsRegisterPage.setVisible(false);
     }
 
     public void resetFormClientRegister(){
@@ -253,16 +286,57 @@ public class ShopBackend {
         alertUpdateDelete("Se a eliminado con exitosamente");
     }
 
-    //Sales
-    public void resetFormSalesRegister(){
-        updateButtonSales.setVisible(false);
+///////////////CRUD VENTAS///////////////
+    public void getConfigurationProductsSale(){
+        idProductsSale.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdProduct()));
+        nameProductsSale.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+        priceProductsSale.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getValue()));
+        stockProductsSale.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getStock()));
 
+        // Configurar la columna de botones
+        /*addProductsSale.setCellFactory(param -> new TableCell<Button, Button>() {
+            final Button addButton = new Button("Agregar");
+
+            {
+                addButton.getStyleClass().add("btnAddProduct");
+                System.out.println(addButton);
+                addButton.setOnAction(event -> {
+                    //Product product = getTableView().getItems().get(getIndex());
+                    // Perform action when button is clicked
+                    // For example, you could add the product to a cart
+                    System.out.println("Agregar a la cesta: ");
+                });
+            }
+
+            @Override
+            protected void updateItem(Button button, boolean empty) {
+                super.updateItem(button, empty);
+                if (empty || button == null) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(addButton);
+                }
+            }
+        });*/
+    }
+
+    public void getConfigurationDetailSale() {
+        columnAmount.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getAmount()));
+        columnDescription.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getItem().getDescription()));
+        columnPrice.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getItem().getValue()));
+        columnAccumulated.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getSubTotal()));
+    }
+    public void resetFormSalesRegister(){
         labelSaleId.setText("");
         labelSaleName.setText("");
         labelSalePhone.setText("");
         labelSaleAddress.setText("");
         labelSaleDate.setText("");
         labelSerie.setText("");
+
+        labelSubTotal.setText("");
+        labelIva.setText("");
+        labelTotal.setText("");
     }
 
     public static Client filterClient(ObservableList<Client> clientList, String id) {
@@ -270,6 +344,39 @@ public class ShopBackend {
                     .filter(client -> client.getId().equals(id))
                     .findFirst()
                     .orElse(null);
+    }
+
+    public Double calculateAmount(double priceItem, int stock){
+        return priceItem * stock;
+    }
+
+    public Double calculateSubTotal(double total){
+        return total/1.19;
+    }
+
+    public void addProductSale(Product product, int amount){
+        DetailSale detailSale = new DetailSale(amount, calculateAmount(product.getValue(), amount), product);
+        listDetail.add(detailSale);
+    }
+
+    public TableRow<Product> selectItemRowProductSale(){
+        TableRow<Product> row = new TableRow<>();
+        row.setOnMouseClicked(event -> {
+            if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                Product clickedProduct = row.getItem();
+                for (Product product:listProduct) {
+                    if (clickedProduct.getIdProduct().equals(product.getIdProduct())){
+                        paneAdd.setVisible(true);
+                        titleAdd.setText(product.getTitle());
+                        idAdd.setText(product.getIdProduct());
+                        stockAdd.setText(String.valueOf(product.getStock()));
+                        break;
+                    }
+                }
+            }
+
+        });
+        return row;
     }
 
     public static <Type> Boolean existIntoArray(String idItem, ObservableList<Type> list, Function<Type, String> idList){
@@ -330,23 +437,9 @@ public class ShopBackend {
         dateLabelProduct.setText("Vencimiento:");
         updateButtonProduct.setVisible(false);
         deleteButonProduct.setVisible(false);
-
-        /**        closeModal.setVisible(false);
-         deleteButonClient.setVisible(false);
-         addClient.setVisible(true);
-         typeClientSelect.setDisable(false);
-         idInput.setDisable(false);
-         nameInput.setDisable(false);
-         lastNameInput.setDisable(false); */
     }
 
     public void resetFormProductUpdate(Product producto){
-        /**closeModalProducts.setVisible(true);
-         updateButtonClient.setVisible(true);
-         deleteButonClient.setVisible(true);
-         addClient.setVisible(false);
-         backButtonData.setDisable(true);
-         */
         backButtonData.setDisable(true);
         updateButtonProduct.setVisible(true);
         deleteButonProduct.setVisible(true);
