@@ -1,23 +1,13 @@
 package shop.develop.kaprichosshop;
 
 import javafx.application.Platform;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import shop.develop.kaprichosshop.model.Client;
 import shop.develop.kaprichosshop.model.Product;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class ShopController extends ShopBackend{
-    //Controls elements from fxml
-    @FXML private AnchorPane pageHome, salesContainer, productsContainer, clientsContainer;
-
-    @FXML private Pane modalPaneOfSale;
 
     //Function for close the application
     public void clickCloseButton(ActionEvent event){
@@ -71,6 +61,10 @@ public class ShopController extends ShopBackend{
         }else {
             modalPaneOfSale.setVisible(false);
         }
+    }
+
+    public void closeAdd(ActionEvent event){
+        paneAdd.setVisible(false);
     }
 
 
@@ -186,18 +180,34 @@ public class ShopController extends ShopBackend{
     public void clickSearchClientSale(ActionEvent event){
         int lastElement = 1;
         Client saleClient = filterClient(listClient, searchClientSale.getText());
+        System.out.println("saleClient = " + saleClient);
         LocalDate createAt = LocalDate.now();
 
         if (!listSale.isEmpty()) {
             lastElement = listSale.size() + 1;
         }
 
-        labelSaleId.setText(saleClient.getId());
-        labelSaleName.setText(saleClient.getName() + " " + saleClient.getLastName());
-        labelSalePhone.setText(saleClient.getPhone());
-        labelSaleAddress.setText(saleClient.getAddress());
-        labelSaleDate.setText(createAt.toString());
-        labelSerie.setText(String.format("%4d", lastElement));
+        if(saleClient != null) {
+            labelSaleId.setText(saleClient.getId());
+            labelSaleName.setText(saleClient.getName() + " " + saleClient.getLastName());
+            labelSalePhone.setText(saleClient.getPhone());
+            labelSaleAddress.setText(saleClient.getAddress());
+            labelSaleDate.setText(createAt.toString());
+            labelSerie.setText(String.format("%4d", lastElement));
+        }else {
+            alertNomatch("El cliente " + searchClientSale.getText() + " no se encuentra registrado en el sistema.");
+            searchClientSale.setText("");
+        }
+    }
+
+    public void clickAddProductSale(ActionEvent event){
+        paneAdd.setVisible(false);
+        modalPaneOfSale.setVisible(false);
+        for (Product product : listProduct) {
+            if (product.getIdProduct().equals(idAdd.getText())) {
+                addProductSale(product, Integer.parseInt(amountAdd.getText()));
+            }
+        }
     }
 
     public void clickAddProduct(ActionEvent event){
@@ -225,7 +235,7 @@ public class ShopController extends ShopBackend{
         }
 
         if (!idExists) {
-            alertNomatch("El producto con el Id" + searchFieldProducts.getText() + " no existe en el sistema.");
+            alertNomatch("El producto con el Id " + searchFieldProducts.getText() + " no existe en el sistema.");
         }
         tableViewProducts.setItems(listProduct);
         searchFieldProducts.setText("");

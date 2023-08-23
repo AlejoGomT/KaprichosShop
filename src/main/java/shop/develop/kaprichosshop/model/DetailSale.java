@@ -5,9 +5,9 @@ import java.util.List;
 public class DetailSale {
     private int amount;
     private  double subTotal;
-    private List<Product> item;
+    private Product item;
 
-    public DetailSale(int amount, double subTotal, List<Product> item) {
+    public DetailSale(int amount, double subTotal, Product item) {
         this.amount = amount;
         this.subTotal = subTotal;
         this.item = item;
@@ -32,12 +32,8 @@ public class DetailSale {
         this.subTotal = subTotal;
     }
 
-    public List<Product> getItem() {
+    public Product getItem() {
         return item;
-    }
-
-    public void setItem(List<Product> item) {
-        this.item = item;
     }
 
     public void itemRegister()  {

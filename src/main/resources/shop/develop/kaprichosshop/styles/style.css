@@ -204,3 +204,35 @@
     -fx-text-fill: #1E555C;
 }
 
+.btnAddProduct {
+    -fx-background-color: #00ff00;
+    -fx-background-radius: 25;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 12;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btnAddProduct:hover {
+    -fx-background-color: #66ff66;
+    -fx-border-color: #00ff00;
+    -fx-border-radius: 25;
+    -fx-font-weight: bold;
+}
+
+.btnBackSale {
+    -fx-background-color: #8a8a5c;
+    -fx-background-radius: 25;
+    -fx-font-family: Bahnschrift;
+    -fx-font-size: 12;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btnBackSale:hover {
+    -fx-background-color: #b8b894;
+    -fx-border-color: #8a8a5c;
+    -fx-border-radius: 25;
+    -fx-font-weight: bold;
+}
+
+
+
